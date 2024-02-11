@@ -163,6 +163,9 @@ MonoBehaviour:
   - {fileID: 603197150}
   - {fileID: 1276928798}
   - {fileID: 1934477871}
+  materialList:
+  - {fileID: 2100000, guid: dea6be7018d7b524f9443f4ce55ab8f9, type: 2}
+  - {fileID: 2100000, guid: 11da976cdd6e5b14aa839d301fa6e6f4, type: 2}
   roomID: 0
 --- !u!4 &13446235
 Transform:
@@ -4034,7 +4037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224130951485110974, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 224166536479716514, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchorMax.y

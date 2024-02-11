@@ -4,10 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - namePrefab: {instanceID: 0}
-  - eyesObject: {instanceID: 0}
-  - whiteEye: {fileID: 2100000, guid: dea6be7018d7b524f9443f4ce55ab8f9, type: 2}
-  - redEye: {fileID: 2100000, guid: 11da976cdd6e5b14aa839d301fa6e6f4, type: 2}
+  - namePrefab: {fileID: 8764858793183311430, guid: ca1589988724f354fa2a7db84bd82e77, type: 3}
+  - eyePrefeb: {fileID: 3814182113928990992, guid: 711a26a772934c549ab104e0f4042c4c, type: 3}
+  - eyeRed: {fileID: 2100000, guid: 11da976cdd6e5b14aa839d301fa6e6f4, type: 2}
+  - eyeWhite: {fileID: 2100000, guid: dea6be7018d7b524f9443f4ce55ab8f9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

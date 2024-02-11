@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -14,8 +14,6 @@ public class MainPlayerScript : NetworkBehaviour
     private TMP_Text nameLabel;
 
     public GameObject eyesObject;
-    public Material eyeRed;
-    public Material eyeWhite;
 
     private NetworkVariable<int> posX = new NetworkVariable<int>(
         0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -43,6 +41,9 @@ public class MainPlayerScript : NetworkBehaviour
     new NetworkString { info = "Player" },
     NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    private NetworkVariable<int> eyeStatus = new NetworkVariable<int>(
+   0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     private LoginManagerScript loginManagerScript;
 
     public override void OnNetworkSpawn()
@@ -59,6 +60,7 @@ public class MainPlayerScript : NetworkBehaviour
         //    playerNameA.Value = new NetworkString() { info = new FixedString32Bytes("Player1") };
         //    playerNameB.Value = new NetworkString() { info = new FixedString32Bytes("Player2") };
         //}
+
         if (IsOwner)
         {
             loginManagerScript = GameObject.FindObjectOfType<LoginManagerScript>();
@@ -70,50 +72,75 @@ public class MainPlayerScript : NetworkBehaviour
             }
         }
     }
-    /// PLAYER EYE COLOR ZONE
-
-    private NetworkVariable<int> eyeStatus = new NetworkVariable<int>(
-       0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     private void updateEyeStatus()
     {
-        if (eyeStatus.Value == 1)
+        if (IsOwner)
         {
-           // print("EYE WHITE!!");
-            eyesObject.GetComponent<Renderer>().material = eyeWhite;
-            eyeStatus.Value = 0;
-        }
-        else if (eyeStatus.Value == 0)
-        {
-           // print("EYE RED!!");
-            eyesObject.GetComponent<Renderer>().material = eyeRed;
-            eyeStatus.Value = 1;
+            if (eyeStatus.Value == 0) { eyeStatus.Value = 1; }
+            else { eyeStatus.Value = 0; }
         }
     }
 
-    /// END OF PLAYER EYE COLOR ZONE
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            updateEyeStatus();
-        }
-
         Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2.5f, 0));
         nameLabel.text = gameObject.name;
         nameLabel.transform.position = nameLabelPos;
         if (IsOwner)
         {
             posX.Value = (int)System.Math.Ceiling(transform.position.x);
+
+            if (IsOwnedByServer)
+            {
+                if (Input.GetKeyDown(KeyCode.F)) { updateEyeStatus(); }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.F)) { updateEyeStatus(); }
+            }
         }
+
         UpdatePlayerInfo();
+        updateEyeColor();
     }
 
     private void UpdatePlayerInfo()
     {
         if (IsOwnedByServer) { nameLabel.text = playerNameA.Value.ToString(); }
         else { nameLabel.text = playerNameB.Value.ToString(); }
+    }
+
+    private void updateEyeColor()
+    {
+        loginManagerScript = GameObject.FindObjectOfType<LoginManagerScript>();
+
+        if (IsOwnedByServer)
+        {
+            if (eyeStatus.Value == 0)
+            {
+                // print("EYE WHITE!!");
+                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[0];
+            }
+            else if (eyeStatus.Value == 1)
+            {
+                // print("EYE RED!!");
+                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[1];
+            }
+        }
+        else
+        {
+            if (eyeStatus.Value == 0)
+            {
+                // print("EYE WHITE!!");
+                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[0];
+            }
+            else if (eyeStatus.Value == 1)
+            {
+                // print("EYE RED!!");
+                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[1];
+            }
+        }
     }
 
     public override void OnDestroy()
