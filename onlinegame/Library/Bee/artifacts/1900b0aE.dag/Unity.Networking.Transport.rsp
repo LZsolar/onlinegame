@@ -118,9 +118,10 @@
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:RELAY_SDK_INSTALLED
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"Assets/Netcode_class/Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
+-r:"Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -344,6 +345,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Collections.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Relay.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"

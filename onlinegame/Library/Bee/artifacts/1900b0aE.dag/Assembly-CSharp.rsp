@@ -120,7 +120,7 @@
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"Assets/Netcode_class/Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
+-r:"Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -347,8 +347,13 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Burst.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Collections.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InternalAPIEditorBridge.007.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InternalAPIEngineBridge.007.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Samples.Utilities.ClientAuthority.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Samples.Utilities.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Samples.Utilities.RNSM.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Tools.Adapters.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Tools.Common.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.Tools.Editor.ref.dll"
@@ -375,6 +380,12 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Profiling.Core.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Authentication.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.Analytics.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.Environments.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Core.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.QoS.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Services.Relay.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.ref.dll"
@@ -382,6 +393,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Tutorials.Core.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Tutorials.Core.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.Editor.ref.dll"
@@ -396,10 +409,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
-"Assets/Netcode_class/Assets/Script/HelperScript.cs"
-"Assets/Netcode_class/Assets/Script/LoginManagerScript.cs"
-"Assets/Netcode_class/Assets/Script/MainGameManagerScript.cs"
-"Assets/Netcode_class/Assets/Script/MainPlayerScript.cs"
+"Assets/Script/HelperScript.cs"
+"Assets/Script/LoginManagerScript.cs"
+"Assets/Script/MainPlayerScript.cs"
 -langversion:9.0
 
 /deterministic

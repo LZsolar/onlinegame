@@ -123,7 +123,7 @@
 -define:MODULE_PHYSICS_2D_EXISTS
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"Assets/Netcode_class/Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
+-r:"Assets/Plugins/QFSW/Quantum Console/Source/Extras/exec/CSharpCompiler/Plugins/mcs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
