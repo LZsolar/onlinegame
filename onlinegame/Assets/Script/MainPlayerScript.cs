@@ -13,6 +13,10 @@ public class MainPlayerScript : NetworkBehaviour
     public TMP_Text namePrefab;
     private TMP_Text nameLabel;
 
+    public GameObject eyesObject;
+    public Material eyeRed;
+    public Material eyeWhite;
+
     private NetworkVariable<int> posX = new NetworkVariable<int>(
         0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
@@ -66,9 +70,36 @@ public class MainPlayerScript : NetworkBehaviour
             }
         }
     }
+    /// PLAYER EYE COLOR ZONE
+
+    private NetworkVariable<int> eyeStatus = new NetworkVariable<int>(
+       0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+    private void updateEyeStatus()
+    {
+        if (eyeStatus.Value == 1)
+        {
+           // print("EYE WHITE!!");
+            eyesObject.GetComponent<Renderer>().material = eyeWhite;
+            eyeStatus.Value = 0;
+        }
+        else if (eyeStatus.Value == 0)
+        {
+           // print("EYE RED!!");
+            eyesObject.GetComponent<Renderer>().material = eyeRed;
+            eyeStatus.Value = 1;
+        }
+    }
+
+    /// END OF PLAYER EYE COLOR ZONE
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            updateEyeStatus();
+        }
+
         Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2.5f, 0));
         nameLabel.text = gameObject.name;
         nameLabel.transform.position = nameLabelPos;
@@ -97,7 +128,7 @@ public class MainPlayerScript : NetworkBehaviour
         rb = this.GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
-    {
+    {     
         if (IsOwner)
         {
             float translation = Input.GetAxis("Vertical") * speed;

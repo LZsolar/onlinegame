@@ -3,7 +3,11 @@ guid: 5e7bbafa9088c984394775723080b579
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - namePrefab: {instanceID: 0}
+  - eyesObject: {instanceID: 0}
+  - whiteEye: {fileID: 2100000, guid: dea6be7018d7b524f9443f4ce55ab8f9, type: 2}
+  - redEye: {fileID: 2100000, guid: 11da976cdd6e5b14aa839d301fa6e6f4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
