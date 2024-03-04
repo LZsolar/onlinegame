@@ -66,13 +66,14 @@ public class PlayerControllerScript : NetworkBehaviour
 
     private void FixedUpdate()
     {
-
+        if(!IsOwner) { return; }
         moveForward();
         turn();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(!IsOwner) return;
         if(collision.gameObject.tag == "Banana")
         {
             StartCoroutine(Freeze());

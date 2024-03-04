@@ -416,6 +416,7 @@
 "Assets/Script/MainPlayerScript.cs"
 "Assets/Script/OwnerNetworkAnimatorScript.cs"
 "Assets/Script/PlayerControllerScript.cs"
+"Assets/Script/PlayerSpawnerScript.cs"
 -langversion:9.0
 
 /deterministic
