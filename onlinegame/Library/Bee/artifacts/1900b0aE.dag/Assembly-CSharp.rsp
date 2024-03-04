@@ -412,6 +412,8 @@
 "Assets/Script/HelperScript.cs"
 "Assets/Script/LoginManagerScript.cs"
 "Assets/Script/MainPlayerScript.cs"
+"Assets/Script/OwnerNetworkAnimatorScript.cs"
+"Assets/Script/PlayerControllerScript.cs"
 -langversion:9.0
 
 /deterministic

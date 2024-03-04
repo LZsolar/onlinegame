@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cf5a48579e6ee45a2936da7317e143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AlternativePlayerPrefabs: e38fdf8210c1d21a294ecfd3
+  AlternativePlayerPrefabs: db35620d10c1d21a294ecfd3
   dropdown_TMP: {fileID: 615998652}
   userNameInputField: {fileID: 1130285958}
   roomIdInputField: {fileID: 1024890176}
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 702175908}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4037,7 +4037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224130951485110974, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 224166536479716514, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f, type: 3}
       propertyPath: m_AnchorMax.y
