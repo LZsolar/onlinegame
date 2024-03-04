@@ -69,7 +69,22 @@ public class PlayerControllerScript : NetworkBehaviour
 
         moveForward();
         turn();
+    }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Banana")
+        {
+            StartCoroutine(Freeze());
+        }
+    }
+    IEnumerator Freeze()
+    {
+        animator.SetBool("Banana",true);
+        float prvSpeed = speed;
+        speed = 0f;
+        yield return new WaitForSeconds(2);
+        animator.SetBool("Banana", false);
+        speed = prvSpeed;
     }
 }

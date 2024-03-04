@@ -207,9 +207,10 @@ GameObject:
   - component: {fileID: 5702316898814114216}
   - component: {fileID: 5604598231011798488}
   - component: {fileID: 2223754585133360734}
+  - component: {fileID: -4696955887287245416}
   m_Layer: 0
   m_Name: Tycharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3781308905
+  GlobalObjectIdHash: 224540123
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -366,6 +367,19 @@ MonoBehaviour:
   rotationSpeed: 10
   namePrefab: {fileID: 8764858793183311430, guid: ca1589988724f354fa2a7db84bd82e77, type: 3}
   eyesObject: {fileID: 1437066968626675952}
+--- !u!114 &-4696955887287245416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415887546230403290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdb37afb0fd742479bd6bcab20943ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bananaPrefab: {fileID: 9213170770942382346, guid: 42cc3c3e106f2c446bc43cf1777f1e30, type: 3}
 --- !u!1 &423198778763040780
 GameObject:
   m_ObjectHideFlags: 0

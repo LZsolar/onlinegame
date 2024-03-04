@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainCanvas
   - Ground
+  - Banana
   layers:
   - Default
   - TransparentFX
