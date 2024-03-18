@@ -7,8 +7,6 @@ using Unity.Collections;
 
 public class MainPlayerScript : NetworkBehaviour
 {
-    public float speed = 5.0f;
-    public float rotationSpeed = 10.0f;
     Rigidbody rb;
     public TMP_Text namePrefab;
     private TMP_Text nameLabel;
@@ -51,10 +49,6 @@ public class MainPlayerScript : NetworkBehaviour
         GameObject canvas = GameObject.FindWithTag("MainCanvas");
         nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity) as TMP_Text;
         nameLabel.transform.SetParent(canvas.transform);
-        posX.OnValueChanged += (int previousValue, int newValue) =>
-        {
-            Debug.Log("Owner ID = " + OwnerClientId + " : Pos X = " + posX.Value);
-        };
         //if (IsServer)
         //{
         //    playerNameA.Value = new NetworkString() { info = new FixedString32Bytes("Player1") };
@@ -153,26 +147,5 @@ public class MainPlayerScript : NetworkBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-    }
-    private void FixedUpdate()
-    {     
-        if (IsOwner)
-        {
-            float translation = Input.GetAxis("Vertical") * speed;
-            translation *= Time.deltaTime;
-            rb.MovePosition(rb.position + this.transform.forward * translation);
-
-            float rotation = Input.GetAxis("Horizontal");
-            if (rotation != 0)
-            {
-                rotation *= rotationSpeed;
-                Quaternion turn = Quaternion.Euler(0f, rotation, 0f);
-                rb.MoveRotation(rb.rotation * turn);
-            }
-            else
-            {
-                rb.angularVelocity = Vector3.zero;
-            }
-        }
     }
 }
