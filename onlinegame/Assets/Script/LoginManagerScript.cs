@@ -6,6 +6,7 @@ using QFSW.QC;
 using TMPro;
 using System;
 using Unity.Mathematics;
+using Unity.Netcode.Transports.UTP;
 
 
 public class LoginManagerScript : MonoBehaviour
@@ -14,12 +15,16 @@ public class LoginManagerScript : MonoBehaviour
     public TMP_Dropdown dropdown_TMP;
 
     public TMP_InputField userNameInputField;
-    public TMP_InputField roomIdInputField;
     private bool isApproveConnection = false;
     [Command("set-approve")]
 
     public GameObject loginPanel;
     public GameObject leaveButton;
+    public string ipAddress = "127.0.0.1";
+    public TMP_InputField ipInputField;
+    UnityTransport transport;
+    public TMP_InputField joincodeInputField;
+    public string joincode;
 
     [Header("SpawnPos")]
     [SerializeField] Transform[] posList;
@@ -90,12 +95,24 @@ public class LoginManagerScript : MonoBehaviour
         isApproveConnection = !isApproveConnection;
         return isApproveConnection;
     }
-    public void Host()
+
+    private void setIpAddress()
     {
+        transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+        ipAddress = ipInputField.GetComponent<TMP_InputField>().text;
+        transport.ConnectionData.Address = ipAddress;
+    }
+    public async void Host()
+    {
+        //setIpAddress();
+        if (RelayManagerScript.Instance.IsRelayEnabled)
+        {
+            await RelayManagerScript.Instance.CreateRelay();
+        }
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
         NetworkManager.Singleton.StartHost();
-        roomID = int.Parse(roomIdInputField.GetComponent<TMP_InputField>().text);
-        Debug.Log("Room id is: " + roomID);
+       /* roomID = int.Parse(roomIdInputField.GetComponent<TMP_InputField>().text);
+        Debug.Log("Room id is: " + roomID);*/
         Debug.Log("Start host");
     }
 
@@ -112,7 +129,7 @@ public class LoginManagerScript : MonoBehaviour
         int characterPrefabIndex = 0;
 
         bool nameCheck = false;
-        bool roomIDCheck = false;
+        bool roomIDCheck = true;
         if (byteLength > 0)
         {
             string combinedString = System.Text.Encoding.ASCII.GetString(connectionData, 0, byteLength);
@@ -120,7 +137,7 @@ public class LoginManagerScript : MonoBehaviour
 
             string hostData = userNameInputField.GetComponent<TMP_InputField>().text;
             nameCheck = NameApproveConnection(extractedString[0], hostData);
-            roomIDCheck = RoomIDApproveConnection(extractedString[2]);
+           // roomIDCheck = RoomIDApproveConnection(extractedString[2]);
 
             for (int i = 0; i < extractedString.Length; i++)
             {
@@ -232,17 +249,21 @@ public class LoginManagerScript : MonoBehaviour
         response.Rotation = spawnRot;
     }
 
-    public void Client()
+    public async void Client()
     {
+        joincode = joincodeInputField.GetComponent<TMP_InputField>().text;
+        if (RelayManagerScript.Instance.IsRelayEnabled && !string.IsNullOrEmpty(joincode))
+        {
+            await RelayManagerScript.Instance.JoinRelay(joincode);
+        }
         string username = userNameInputField.GetComponent<TMP_InputField>().text;
         string characterId = setInputSkinData().ToString();
-        string roomID = roomIdInputField.GetComponent<TMP_InputField>().text;
-        string[] inputFields = { username, characterId, roomID };
+        string[] inputFields = { username, characterId };
         string clientData = HelperScript.CombineStrings(inputFields);
         NetworkManager.Singleton.NetworkConfig.ConnectionData = System.Text.Encoding.ASCII.GetBytes(clientData);
         NetworkManager.Singleton.StartClient();
-        Debug.Log("Start client");
 
+        Debug.Log("Start client");
     }
 
     public bool NameApproveConnection(string clientData, string hostData)

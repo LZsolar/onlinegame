@@ -422,6 +422,8 @@
 "Assets/Script/OwnerNetworkAnimatorScript.cs"
 "Assets/Script/PlayerControllerScript.cs"
 "Assets/Script/PlayerSpawnerScript.cs"
+"Assets/Script/RelayManagerScript.cs"
+"Assets/Script/Singleton.cs"
 -langversion:9.0
 
 /deterministic
