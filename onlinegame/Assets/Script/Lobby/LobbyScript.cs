@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Services.Lobbies.Models;
-using Unity.Services.Lobbies;
 using UnityEngine;
-using Mono.CSharp.Linq;
-using QFSW.QC;
-using TMPro;
-using Unity.Services.Core;
-using Unity.Services.Authentication;
-using Unity.Netcode.Transports.UTP;
-using Unity.Netcode;
-using Unity.Networking.Transport.Relay;
-using Unity.Services.Relay.Models;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
+using System.Net.Http.Headers;
+using Unity.Netcode.Transports.UTP;
+using Unity.Networking.Transport.Relay;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using System.Linq;
+using TMPro;
+using System.Threading.Tasks;
+using UnityEngine.UI;
+using Unity.Netcode;
+using System;
+using QFSW.QC;
 
 public class LobbyScript : MonoBehaviour
 {
@@ -25,7 +29,7 @@ public class LobbyScript : MonoBehaviour
     public TMP_Text time;
 
     [Header("Join")]
-    public TMP_Text roomCode;
+    public GameObject roomCode;
 
     [Header("Menu")]
     public GameObject CreateMenuObj;
@@ -39,6 +43,28 @@ public class LobbyScript : MonoBehaviour
     public TMP_Text playerList;
     public TMP_Text roominfo;
 
+    [SerializeField] LoginManagerScript loginManagerScript;
+
+    private float lobbyUpdataTimer;
+    private void Update()
+    {
+        HandleLobbyPollForUpdates();
+    }
+    private async void HandleLobbyPollForUpdates()
+    {
+        if (joinedLobby != null)
+        {
+            lobbyUpdataTimer -= Time.deltaTime;
+            if (lobbyUpdataTimer < 0f)
+            {
+                float lobbyUpdateTimerMax = 1.1f;
+                lobbyUpdataTimer = lobbyUpdateTimerMax;
+                Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                joinedLobby = lobby;
+                PrintPlayers(lobby);
+            }
+        }
+    }
 
     // Update is called once per frame
     [Command]
@@ -94,8 +120,12 @@ public class LobbyScript : MonoBehaviour
         }
     }
 
-    private async void JoinLobbyByCode(string lobbyCode)
+    [Command]
+    public async void JoinLobbyByCode(string lobbyCode)
     {
+        await UnityServices.InitializeAsync();
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+      //  string lobbyCode = roomCode.text;
         try
         {
             string user = username.text;
@@ -152,8 +182,9 @@ public class LobbyScript : MonoBehaviour
 
         waitingRoom.SetActive(true);
     }
+    [Command]
     public void Click_Join() {
-        JoinLobbyByCode(roomCode.ToString());
+        JoinLobbyByCode(roomCode.GetComponent<TMP_InputField>().text);
 
         JoinMenuObj.SetActive(false);
         CreateMenuObj.SetActive(false);
@@ -186,7 +217,16 @@ public class LobbyScript : MonoBehaviour
         waitingRoom.SetActive(false);
     }
 
-    public async void StartGame(Lobby joinedLobby)
+    public void clossAllPanel()
+    {
+        JoinMenuObj.SetActive(false);
+        CreateMenuObj.SetActive(false);
+        MainMenu.SetActive(false);
+
+        waitingRoom.SetActive(false);
+    }
+
+    public async void StartGame()
     {
         try
         {
@@ -218,11 +258,16 @@ public class LobbyScript : MonoBehaviour
                     });
                     hostLobby = lobby;
                     joinedLobby = hostLobby;
+                    clossAllPanel();
+                    Debug.Log("JOIN GAME : " + joinCode);
+                    loginManagerScript.Host();
                 }
                 else
                 {
                     JoinRelay();
                 }
+               
+
             }
         }
         catch (LobbyServiceException e)
@@ -248,5 +293,7 @@ public class LobbyScript : MonoBehaviour
             Debug.LogError("Failed to get UnityTransport component from NetworkManager.Singleton");
             // Handle the error gracefully (e.g., display a message to the user)
         }
+        clossAllPanel();
+        loginManagerScript.Client();
     }
 }

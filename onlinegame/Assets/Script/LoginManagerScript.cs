@@ -27,6 +27,8 @@ public class LoginManagerScript : MonoBehaviour
     [Header("Material")]
     [SerializeField] public List<Material> materialList;
 
+    [SerializeField] public LobbyScript lobbyScript;
+
     public int roomID;
 
     private void Start()
@@ -234,7 +236,7 @@ public class LoginManagerScript : MonoBehaviour
 
     public void Client()
     {
-        string username = userNameInputField.GetComponent<TMP_InputField>().text;
+        string username = "b";
         string characterId = setInputSkinData().ToString();
         string roomID = roomIdInputField.GetComponent<TMP_InputField>().text;
         string[] inputFields = { username, characterId, roomID };
