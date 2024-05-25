@@ -8,10 +8,7 @@ using Unity.Collections;
 public class MainPlayerScript : NetworkBehaviour
 {
     Rigidbody rb;
-    public TMP_Text namePrefab;
-    private TMP_Text nameLabel;
 
-    public GameObject eyesObject;
 
     private NetworkVariable<int> posX = new NetworkVariable<int>(
         0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -47,8 +44,7 @@ public class MainPlayerScript : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         GameObject canvas = GameObject.FindWithTag("MainCanvas");
-        nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity) as TMP_Text;
-        nameLabel.transform.SetParent(canvas.transform);
+       
         //if (IsServer)
         //{
         //    playerNameA.Value = new NetworkString() { info = new FixedString32Bytes("Player1") };
@@ -79,8 +75,7 @@ public class MainPlayerScript : NetworkBehaviour
     private void Update()
     {
         Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 2.5f, 0));
-        nameLabel.text = gameObject.name;
-        nameLabel.transform.position = nameLabelPos;
+     
         if (IsOwner)
         {
             posX.Value = (int)System.Math.Ceiling(transform.position.x);
@@ -95,51 +90,12 @@ public class MainPlayerScript : NetworkBehaviour
             }
         }
 
-        UpdatePlayerInfo();
-        updateEyeColor();
     }
 
-    private void UpdatePlayerInfo()
-    {
-        if (IsOwnedByServer) { nameLabel.text = playerNameA.Value.ToString(); }
-        else { nameLabel.text = playerNameB.Value.ToString(); }
-    }
-
-    private void updateEyeColor()
-    {
-        loginManagerScript = GameObject.FindObjectOfType<LoginManagerScript>();
-
-        if (IsOwnedByServer)
-        {
-            if (eyeStatus.Value == 0)
-            {
-                // print("EYE WHITE!!");
-                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[0];
-            }
-            else if (eyeStatus.Value == 1)
-            {
-                // print("EYE RED!!");
-                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[1];
-            }
-        }
-        else
-        {
-            if (eyeStatus.Value == 0)
-            {
-                // print("EYE WHITE!!");
-                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[0];
-            }
-            else if (eyeStatus.Value == 1)
-            {
-                // print("EYE RED!!");
-                eyesObject.GetComponent<Renderer>().material = loginManagerScript.materialList[1];
-            }
-        }
-    }
-
+  
+  
     public override void OnDestroy()
     {
-        if (nameLabel != null) Destroy(nameLabel.gameObject);
         base.OnDestroy();
     }
 
