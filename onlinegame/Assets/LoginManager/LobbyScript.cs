@@ -182,7 +182,7 @@ public class LobbyScript : Singleton<LobbyScript>
             if (textNameLobby == null)
                 return;
 
-            string lobbyName = textNameLobby.text;
+            string lobbyName = "Welcome to Lobby!";
             playerName = textNamePlayer.text;
             int maxPlayers = 2;
             CreateLobbyOptions options = new CreateLobbyOptions()
