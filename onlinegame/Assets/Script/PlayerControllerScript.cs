@@ -15,8 +15,11 @@ public class PlayerControllerScript : NetworkBehaviour
     private Animator animator;
     private Rigidbody rb;
     private bool running;
+    public bool isDie = false;
 
     public bool isPunching = true;
+    GameObject dieMenu;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,8 @@ public class PlayerControllerScript : NetworkBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         running = false;
+        dieMenu = GameObject.FindGameObjectWithTag("DeadMenu");
+        dieMenu.SetActive(false);
     }
 
     void moveForward()
@@ -80,6 +85,10 @@ public class PlayerControllerScript : NetworkBehaviour
         {
             StartCoroutine(FreezeForPunch());
         }
+        if (isDie)
+        {
+            dieMenu.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,7 +107,10 @@ public class PlayerControllerScript : NetworkBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerControllerScript thatPerson = collision.gameObject.GetComponent<PlayerControllerScript>();
-            if (thatPerson.isPunching) { thatPerson.animator.SetBool("isDie", true); }
+            if (thatPerson.isPunching) { 
+                thatPerson.animator.SetBool("isDie", true); 
+                thatPerson.isDie = true;
+            }
         }
     }
 
