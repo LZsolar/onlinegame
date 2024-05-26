@@ -21,4 +21,4 @@ GDD: https://shorturl.asia/cxvDd
 
 64120501023 - Code
 
-64120501027 - 
+64120501027 - Character Artist / Secondary 3D Artist
