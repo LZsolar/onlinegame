@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2157494731101233584}
   - component: {fileID: 2406765225992071503}
   - component: {fileID: 3125420830912794645}
+  - component: {fileID: 2367312019218938753}
   m_Layer: 6
   m_Name: Agent
   m_TagString: Untagged
@@ -148,3 +149,24 @@ MonoBehaviour:
   sphereCheckRadius: 7
   agentComponent: {fileID: 0}
   currentState: 0
+--- !u!95 &2367312019218938753
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999859047475132028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: f203b5d1f555d104e8aab58172809bc9, type: 3}
+  m_Controller: {fileID: 9100000, guid: 89bcf523c030a8a4ca3a40af1db3d7ba, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

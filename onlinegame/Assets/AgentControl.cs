@@ -32,7 +32,7 @@ public class AgentControl : MonoBehaviour
     {
         agentComponent = GetComponent<NavMeshAgent>();
         currentState = AgentState.Idle;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
     }
 
