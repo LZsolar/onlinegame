@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Banana
   - AI
+  - DeadMenu
   layers:
   - Default
   - TransparentFX

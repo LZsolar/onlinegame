@@ -5,9 +5,7 @@ Game name: Project Go-Duck!
 itch.io : https://sleepplus.itch.io/gooooo-duck
 
 
-Slide Present + Video Prototype : [https://shorturl.asia/djKJ8](https://shorturl.at/bdguF)
-
-Lobby Present + Video: [https://bit.ly/3UhBDPr]
+Video : https://shorturl.at/1eBpt
 
 
 GDD: https://shorturl.asia/cxvDd
@@ -15,10 +13,10 @@ GDD: https://shorturl.asia/cxvDd
 
 [ Member ]
 
-64120501010 -
+64120501010 - UI Designer / Map Designer
 
-64120501021 - 
+64120501021 - Game Designer
 
-64120501023 - Code
+64120501023 - Coder
 
-64120501027 - Character Artist / Secondary 3D Artist
+64120501027 - Character Artist / 3D Artist
